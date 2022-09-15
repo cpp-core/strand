@@ -6,6 +6,8 @@
 #include "coro/stream/stream.h"
 
 using namespace coro;
+using namespace std::string_literals;
+
 static const size_t NumberSamples = 64;
 
 coro::Transformer<int,int> add_one() {
