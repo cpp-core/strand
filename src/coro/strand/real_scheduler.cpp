@@ -15,7 +15,7 @@ static auto find_timepoint(Strand *s, chron::TimePoint tp) {
 	 [&](const Yield::ResumeAfterReal& state) { return tp + state.duration; },
 	 [&](const Yield::Resume& state) { return tp; },
 	 [&](const auto& state) { 
-	     throw core::runtime_error("Invalid initial runnable state: {}", state);
+	     throw core::runtime_error("Invalid initial runnable state: {}");//, state);
 	     return chron::TimePoint::max();
 	 });
 }

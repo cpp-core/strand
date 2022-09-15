@@ -25,7 +25,7 @@ auto find_timepoint(Strand *s, TimePoint vtp, TimePoint rtp) {
 	     return std::make_pair(true, vtp);
 	 },
 	 [&](const auto& state) {
-	     throw core::runtime_error("Invalid initial state: {}", state);
+	     throw core::runtime_error("Invalid initial state: {}");//, state);
 	     return std::make_pair(true, TimePoint::max());
 	 });
 }
