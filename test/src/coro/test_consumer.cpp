@@ -1,4 +1,4 @@
-// Copyright 2021 by Mark Melton
+// Copyright 2021, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -16,7 +16,7 @@ coro::Consumer<int,int> add_one() {
     co_return;
 }
 
-coro::Consumer<char> append(string& s) {
+coro::Consumer<char> append(std::string& s) {
     while (true) {
 	auto c = co_yield coro::input{};
 	s.push_back(c);
@@ -31,7 +31,7 @@ TEST(CoroConsumer, Base)
     // 	EXPECT_EQ(p(), input + 1);
     // }
 
-    // string result;
+    // std::string result;
     // auto s = append(result);
     // s.push('a');
     // s.push('b');
