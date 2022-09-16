@@ -1,4 +1,4 @@
-// Copyright (C) 2017, 2018, 2019, 2021 by Mark Melton
+// Copyright (C) 2017, 2018, 2019, 2021, 2022 by Mark Melton
 //
 
 #pragma once
@@ -10,7 +10,7 @@ namespace coros
 
 class LowResYield {
 public:
-    LowResYield(const LowResClock& clock, chron::nanos period)
+    LowResYield(const chron::LowResClock& clock, chron::nanos period)
 	: clock_(clock)
 	, period_(period)
 	, next_(clock_.now() + period_) {
@@ -32,7 +32,7 @@ public:
     }
     
 private:
-    const LowResClock& clock_;
+    const chron::LowResClock& clock_;
     chron::nanos period_;
     chron::TimePoint next_;
 };

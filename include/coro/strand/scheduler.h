@@ -1,4 +1,4 @@
-// Copyright (C) 2021 by Mark Melton
+// Copyright (C) 2021, 2022 by Mark Melton
 //
 
 #pragma once
@@ -11,7 +11,7 @@ namespace coros {
 
 class Scheduler {
 public:
-    using Mode = LowResClock::Mode;
+    using Mode = chron::LowResClock::Mode;
     
     struct StrandPriority {
 	bool operator()(const Strand *l, const Strand *r) const {
@@ -44,8 +44,8 @@ public:
 
     const std::exception_ptr& eptr() const { return exception_ptr_; }
 
-    const LowResClock& clock() const { return clock_; }
-    LowResClock& clock() { return clock_; }
+    const chron::LowResClock& clock() const { return clock_; }
+    chron::LowResClock& clock() { return clock_; }
     
     chron::TimePoint virtual_now() const { return clock_.virtual_now(); }
     chron::TimePoint now() const { return clock_.now(); }
@@ -134,7 +134,7 @@ private:
     Strands loop_;
     SetupFunctors setup_;
     TearDownFunctors tear_down_;
-    LowResClock clock_;
+    chron::LowResClock clock_;
     chron::TimePoint start_, end_;
 };
 
