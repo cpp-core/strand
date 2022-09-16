@@ -2,7 +2,7 @@
 //
 
 #pragma once
-#include "coro/base.h"
+#include "coro/strand/base.h"
 #include "coro/strand/yield.h"
 #include "core/mp/contains.h"
 
