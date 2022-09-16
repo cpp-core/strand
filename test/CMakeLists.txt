@@ -6,12 +6,6 @@ find_package(googletest REQUIRED)
 find_package(Threads REQUIRED)
 
 set(TESTS
-  stream/base
-  stream/generator
-  stream/io
-  stream/samplers
-  stream/types
-  stream/util
   )
 
 set(LIBRARIES
