@@ -6,7 +6,7 @@
 #include "core/chrono/chrono.h"
 #include "core/mp/list.h"
 
-namespace coros
+namespace coro
 {
 
 struct Yield {
@@ -35,4 +35,4 @@ struct Yield {
 
 std::ostream& operator<<(std::ostream& os, const Yield::Code& yield);
 
-}; // coros
+}; // coro

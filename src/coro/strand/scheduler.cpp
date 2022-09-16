@@ -1,10 +1,10 @@
-// Copyright (C) 2021 by Mark Melton
+// Copyright (C) 2021, 2022 by Mark Melton
 //
 
 #include <thread>
 #include "coro/strand/scheduler.h"
 
-namespace coros
+namespace coro
 {
 
 bool Scheduler::fast_forward(chron::TimePoint tp) {
@@ -33,5 +33,5 @@ Strand::Profiles Scheduler::profiles() const {
     return p;
 }
 
-}; // coros
+}; // coro
 

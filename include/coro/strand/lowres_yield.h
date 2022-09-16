@@ -5,7 +5,7 @@
 #include "coro/strand/strand.h"
 #include "core/chrono/lowres_clock.h"
 
-namespace coros
+namespace coro
 {
 
 class LowResYield {
@@ -37,4 +37,4 @@ private:
     chron::TimePoint next_;
 };
 
-}; // coros
+}; // coro

@@ -5,7 +5,7 @@
 #include "coro/strand/real_scheduler.h"
 #include "core/fp/match.h"
 
-namespace coros {
+namespace coro {
 
 static auto find_timepoint(Strand *s, chron::TimePoint tp) {
     return core::match
@@ -84,5 +84,5 @@ bool RealScheduler::run_group(Strands& strands) {
     return not eptr();
 }
 
-}; // coros
+}; // coro
 

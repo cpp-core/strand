@@ -5,7 +5,7 @@
 #include "core/fp/match.h"
 #include "core/chrono/duration.h"
 
-namespace coros
+namespace coro
 {
 
 std::ostream& operator<<(std::ostream& os, const Yield::Code& yield) {
@@ -24,5 +24,5 @@ std::ostream& operator<<(std::ostream& os, const Yield::Code& yield) {
     return os;
 }
 
-}; // coros
+}; // coro
 

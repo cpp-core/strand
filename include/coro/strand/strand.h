@@ -1,4 +1,4 @@
-// Copyright (C) 2017, 2018, 2019, 2021 by Mark Melton
+// Copyright (C) 2017, 2018, 2019, 2021, 2022 by Mark Melton
 //
 
 #pragma once
@@ -6,7 +6,7 @@
 #include "coro/strand/yield.h"
 #include "core/mp/contains.h"
 
-namespace coros
+namespace coro
 {
 
 class Strand {
@@ -103,4 +103,4 @@ using Strands = std::vector<Strand>;
 template<class T>
 concept StrandLambda = requires (T a) { requires std::is_same_v<decltype(a()), Strand>; };
 
-}; // coros
+}; // coro

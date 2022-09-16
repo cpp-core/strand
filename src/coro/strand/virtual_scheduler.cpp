@@ -7,7 +7,7 @@
 
 using namespace chron;
 
-namespace coros {
+namespace coro {
 
 auto find_timepoint(Strand *s, TimePoint vtp, TimePoint rtp) {
     return core::match
@@ -108,5 +108,5 @@ bool VirtualScheduler::run_group(Strands& strands) {
     return not eptr();
 }
 
-}; // coros
+}; // coro
 

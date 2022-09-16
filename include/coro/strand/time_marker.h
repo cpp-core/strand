@@ -1,11 +1,11 @@
-// Copyright (C) 2017, 2018, 2019, 2021 by Mark Melton
+// Copyright (C) 2017, 2018, 2019, 2021, 2022 by Mark Melton
 //
 
 #pragma once
 #include "coro/strand/strand.h"
 #include "coro/strand/scheduler.h"
 
-namespace coros
+namespace coro
 {
 
 class TimeMarker {
@@ -31,4 +31,4 @@ private:
     Scheduler& scheduler_;
 };
 
-}; // coros
+}; // coro

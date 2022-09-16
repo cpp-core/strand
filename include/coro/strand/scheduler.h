@@ -7,7 +7,7 @@
 #include "core/chrono/lowres_clock.h"
 #include "core/chrono/timepoint.h"
 
-namespace coros {
+namespace coro {
 
 class Scheduler {
 public:
@@ -140,5 +140,5 @@ private:
 
 using SchedulerPtr = std::unique_ptr<Scheduler>;
 
-}; // coros
+}; // coro
 
