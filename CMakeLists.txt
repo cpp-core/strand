@@ -80,14 +80,14 @@ target_include_directories(cxx_coro_strand
 
 # Optionally configure the tests
 #
-# if(CORO_STRAND_TEST)
-#   enable_testing()
-#   if (NOT TARGET check)
-#     add_custom_target(check ${CMAKE_CTEST_COMMAND})
-#     add_custom_target(check_detail ${CMAKE_CTEST_COMMAND} -V)
-#   endif()
-#   add_subdirectory(test)
-# endif()
+if(CORO_STRAND_TEST)
+  enable_testing()
+  if (NOT TARGET check)
+    add_custom_target(check ${CMAKE_CTEST_COMMAND})
+    add_custom_target(check_detail ${CMAKE_CTEST_COMMAND} -V)
+  endif()
+  add_subdirectory(test)
+endif()
 
 # Optionally configure the documentation
 #

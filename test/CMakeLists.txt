@@ -6,11 +6,11 @@ find_package(googletest REQUIRED)
 find_package(Threads REQUIRED)
 
 set(TESTS
+  strand/base
   )
 
 set(LIBRARIES
-  cxx_coro_stream
-  cxx_core_tuple::cxx_core_tuple
+  cxx_coro_strand
   fmt::fmt
   googletest::cxx-googletest
   Threads::Threads)
