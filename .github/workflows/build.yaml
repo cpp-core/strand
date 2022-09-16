@@ -1,0 +1,60 @@
+
+name: Build and Unit Test
+
+on:
+  push:
+    branches:
+      - 'main'
+  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Requirements
+      run: sudo apt-get install -y clang-11 libc++-11-dev libc++abi-11-dev
+      
+    - name: SSH Agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: |
+          ${{ secrets.CXX_DEPENDS }}
+          ${{ secrets.CXX_CORE_PP }}
+          ${{ secrets.CXX_CORE_MP }}
+          ${{ secrets.CXX_CORE_TUPLE }}
+          ${{ secrets.CXX_CORO_STREAM }}
+        
+    - name: Checkout cxx-coro-stream
+      uses: actions/checkout@v2
+      with:
+        repository: melton1968/cxx-coro-stream
+        path: cxx-coro-stream
+        
+    - name: Checkout cxx-depends
+      uses: actions/checkout@v2
+      with:
+        repository: melton1968/cxx-depends
+        ref: main
+        path: cxx-depends
+        
+    - name: Build dependencies
+      run: |
+        export CC=clang-11
+        export CXX=clang++-11
+        mkdir cxx-depends/build && pushd cxx-depends/build
+        cmake -DCMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opt -DCORE_TEST=ON ..
+        make cxx_coro_stream-depends
+        popd
+
+    - name: Build and run the tests
+      run: |
+        export CC=clang-11
+        export CXX=clang++-11
+        mkdir cxx-coro-stream/build && pushd cxx-coro-stream/build
+        cmake -DCMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opt ..
+        make
+        make check
+        make install
+        popd
