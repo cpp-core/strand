@@ -30,6 +30,7 @@ option(CORO_STRAND_DOCS "Generate the docs." OFF)
 # Add our dependencies
 #
 include(GNUInstallDirs)
+find_package(cxx_core_chrono REQUIRED)
 find_package(cxx_core_mp REQUIRED)
 find_package(cxx_core_tuple REQUIRED)
 find_package(fmt REQUIRED)
@@ -67,6 +68,7 @@ endforeach()
 add_library(cxx_coro_strand ${FILES})
 
 target_link_libraries(cxx_coro_strand PUBLIC
+  cxx_core_chrono::cxx_core_chrono
   cxx_core_mp::cxx_core_mp
   cxx_core_tuple::cxx_core_tuple
   )
