@@ -99,4 +99,6 @@ endif()
 #
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(cxx_coro_strand)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/coro/strand DESTINATION include/coro/)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/coro/strand DESTINATION include/coro)
+install(FILES ${PROJECT_SOURCE_DIR}/include/coro/consumer.h DESTINATION include/coro)
+install(FILES ${PROJECT_SOURCE_DIR}/include/coro/transformer.h DESTINATION include/coro)
