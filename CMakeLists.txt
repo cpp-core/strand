@@ -1,9 +1,9 @@
 cmake_minimum_required (VERSION 3.22 FATAL_ERROR)
-project (cxx_coro_strand VERSION 0.1 LANGUAGES C CXX)
+project (strand VERSION 0.1 LANGUAGES C CXX)
 
 # Make including this file idempotent
 #
-if(TARGET cxx_coro_strand)
+if(TARGET strand)
   return()
 endif()
 
@@ -30,18 +30,18 @@ option(CORO_STRAND_DOCS "Generate the docs." OFF)
 # Add our dependencies
 #
 include(GNUInstallDirs)
-find_package(cxx_core_chrono REQUIRED)
-find_package(cxx_core_mp REQUIRED)
-find_package(cxx_core_tuple REQUIRED)
+find_package(chrono REQUIRED)
+find_package(mp REQUIRED)
+find_package(tuple REQUIRED)
 find_package(fmt REQUIRED)
 
 # Output configuration
 #
-message("-- cxx-coro-strand: Configuration: ${CMAKE_CURRENT_SOURCE_DIR}")
-message("-- cxx-coro-strand: Included from: ${CMAKE_SOURCE_DIR}")
-message("-- cxx-coro-strand: CORO_STRAND_TEST ${CORO_STRAND_TEST}")
-message("-- cxx-coro-strand: CORO_STRAND_DOCS ${CORO_STRAND_DOCS}")
-message("-- cxx-coro-strand: CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
+message("-- strand: Configuration: ${CMAKE_CURRENT_SOURCE_DIR}")
+message("-- strand: Included from: ${CMAKE_SOURCE_DIR}")
+message("-- strand: CORO_STRAND_TEST ${CORO_STRAND_TEST}")
+message("-- strand: CORO_STRAND_DOCS ${CORO_STRAND_DOCS}")
+message("-- strand: CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
 
 # Compilation
 #
@@ -65,15 +65,15 @@ foreach(NAME ${SOURCES})
   list(APPEND FILES "src/coro/${NAME}.cpp")
 endforeach()
 
-add_library(cxx_coro_strand ${FILES})
+add_library(strand ${FILES})
 
-target_link_libraries(cxx_coro_strand PUBLIC
-  cxx_core_chrono::cxx_core_chrono
-  cxx_core_mp::cxx_core_mp
-  cxx_core_tuple::cxx_core_tuple
+target_link_libraries(strand PUBLIC
+  chrono::chrono
+  mp::mp
+  tuple::tuple
   )
 
-target_include_directories(cxx_coro_strand
+target_include_directories(strand
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
@@ -98,7 +98,7 @@ endif()
 # Installation
 #
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
-install_config(cxx_coro_strand)
+install_config(strand)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/coro/strand DESTINATION include/coro)
 install(FILES ${PROJECT_SOURCE_DIR}/include/coro/consumer.h DESTINATION include/coro)
 install(FILES ${PROJECT_SOURCE_DIR}/include/coro/transformer.h DESTINATION include/coro)
