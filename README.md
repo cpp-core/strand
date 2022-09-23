@@ -6,8 +6,6 @@
 
 ## Installation
 
-### Using depends
-
     git clone https://github.com/cpp-core/depends
 	mkdir depends/build && cd depends/build
     CC=clang-mp-11 CXX=clang++-mp-11 cmake -DCMAKE_INSTALL_PREFIX=$HOME/opt -DALL_TEST=ON ..
